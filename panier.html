@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Shop</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="left-side">
+                    <div class="nav-link-wrapper">
+                        <a href="Client.html">Client</a>
+                    </div>
+                    <div class="nav-link-wrapper">
+                        <a href="Produits.html">Produits</a>
+                    </div>
+                    <div class="nav-link-wrapper active-nav-link">
+                        <a href="panier.html">Panier</a>
+                    </div>
+
+                </div>
+                <div class="shop-link-wrapper">
+                    <a href="index.html">SHOP</a>
+                </div>
+                <div class="right-side">
+                    <div class="light-dark-img">
+                        <img src="images/light-dark.png" alt="Github repo" width="30" height="30">
+                    </div>
+                    <div class="toggle-container">
+                        <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+                    </div>
+                    <div class="nav-brand-wrapper">
+                        by NOSFERATU
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <div class="survey-items-wrapper">
+                    
+                    <a href="https://asoftmurmur.com" target="_blank">    
+                        <div class="survey-item-wrapper">
+                            <div class="UI-to-survey" style="background-image:url(images/UI2.PNG);"></div>
+                            <div class="img-text-wrapper">
+                                Analysez ce site web
+                            </div>
+                        </div>
+                    </a>
+                    <div class="survey-questions-wrapper">
+                        <form>
+                            <div class="row">
+                                <div class="question">Combien de fois utilisez-vous ce site web par semaine?</div>
+                                <select id="jours" name="jours">
+                                    <option value="choisir">Veuillez choisir une option</option>
+                                    <option value="0">0</option>
+                                    <option value="1-2">1-2</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="6-7">6-7</option>
+                                </select>
+                            </div><br>
+                            <div class="question">Quelles fonctions semblent intéressantes selon vous?</div>
+                            <div class="checkboxes">
+                                <div class="row">
+                                    <input type="checkbox" id="Rain" name="fonction" value="Rain">
+                                    <label for="Rain"> Rain</label><br>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Thunder" name="fonction" value="Thunder">
+                                    <label for="Thunder"> Thunder</label><br>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Waves" name="fonction" value="Waves">
+                                    <label for="Waves"> Waves</label>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Wind" name="fonction" value="Wind">
+                                    <label for="Wind"> Wind</label><br>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Fire" name="fonction" value="Fire">
+                                    <label for="Fire"> Fire</label><br>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Birds" name="fonction" value="Birds">
+                                    <label for="Birds"> Birds</label>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Crickets" name="fonction" value="Crickets">
+                                    <label for="Crickets"> Crickets</label>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Coffee-shop" name="fonction" value="Coffee-shop">
+                                    <label for="Coffee-shop"> Coffee shop</label><br>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="Singing-Bowl" name="fonction" value="Singing-Bowl">
+                                    <label for="Singing-Bowl"> Singing Bowl</label><br>
+                                </div>
+                                <div class="row">
+                                    <input type="checkbox" id="White-noise" name="fonction" value="White-noise">
+                                    <label for="White-noise"> White-noise</label>
+                                </div>
+                            </div><br>
+                            <div class="question">Quelle fonction non offerte aimeriez-vous avoir?</div>
+                            <input type="text" id="idea" name="idea"  placeholder="Une idée de génie..."><br>
+                            <div class="question">Avez-vous d'autres commentaires ou recommendations?</div>
+                            <input type="text" id="commentaires" name="commentaires" placeholder="Super commentaire!"><br>
+                            <div class="question">Que pensez-vous de l'apparence visuelle de ce site?</div>
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="1" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="2" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="4" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="5" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                            <div class="question">Que pensez-vous de la facilité d'utilisation de ce site?</div>
+                            <div class="rate">
+                                <input type="radio" id="star6" name="rate2" value="1" />
+                                <label for="star6" title="text">6 stars</label>
+                                <input type="radio" id="star7" name="rate2" value="2" />
+                                <label for="star7" title="text">7 stars</label>
+                                <input type="radio" id="star8" name="rate2" value="3" />
+                                <label for="star8" title="text">8 stars</label>
+                                <input type="radio" id="star9" name="rate2" value="4" />
+                                <label for="star9" title="text">9 stars</label>
+                                <input type="radio" id="star10" name="rate2" value="5" />
+                                <label for="star10" title="text">10 stars</label>
+                            </div>
+                            
+                            <div class="soumettre">
+                                <input type="submit" value="Soumettre">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        <div class="page-bottom">
+            <div class="bottom-side">
+                <a href="https://github.com/4nn3-50ph13/SEG-3525-Survey" target="_blank">    
+                    <img src="images/logo.png" alt="Github repo" width="30" height="30">
+                </a>
+            </div>
+            <div class="bottom-centre">
+                <h3>À propos de SHOP</h3>
+                <p3>Le SHOP a été conçu pour blabla balbalbal balbal albal alba lbal ablablabalb labalb alba lba lab albalbalba labla alblab aba
+                </p3>
+                <br>
+                <p6>
+                    Ce site a été développé par NOSFERATU. 
+                </p6>
+                <p6>
+                    NOSFERATU est une marque non-enregistrée qui ne veut rien dire du tout. 
+                </p6>
+            </div>
+            <div class="bottom-side">
+                <a href="https://github.com/4nn3-50ph13/SEG-3525-Survey" target="_blank">    
+                    <img src="images/logo.png" alt="Github repo" width="30" height="30">
+                </a>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
