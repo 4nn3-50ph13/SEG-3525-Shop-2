@@ -9,6 +9,7 @@ html {
     --background-color2: rgb(54, 30, 14);
     --reddish-accent-color: rgb(38, 38, 58);
     --text-color: rgb(194, 196, 197);
+    --line-color: rgba(194, 196, 197, 0.35);
     --accent-color: #77242b;
 }
 
@@ -18,6 +19,7 @@ html[data-theme='dark'] {
     --background-color2: #b97b52;
     --text-color: rgb(36, 36, 36);
     --reddish-accent-color: rgb(82, 107, 102);
+    --line-color: rgba(36, 36, 36, 0.35);
     --accent-color: #92603e;
 }
 
@@ -165,7 +167,7 @@ html.transition *:after {
 /* --- N A V  L I N K --- */
 
 .shop-link-wrapper {
-    border: 3px solid transparent;
+    border: transparent;
     padding: 6px;
     text-align: center;
     text-decoration: none;
@@ -291,9 +293,10 @@ html.transition *:after {
 /* --- S U R V E Y  C O N T E N T --- */
 
 form > input[type=text] {
-    margin: auto;
     width: 40%;
     transition: 0.5s;
+    border: 1px solid transparent;
+    padding-top: 0%;
 }
 
 form > input[type=text]:focus-visible {
@@ -309,11 +312,12 @@ form > input[type=text]:focus-visible {
 
 form {
     display: grid;
-    max-width: 660px;
+    min-width: 600px;
     grid-template-columns: 1fr;
     padding-left: 10px;
     color: var(--text-color);
     row-gap: 10px;
+    border-right: 2px solid var(--line-color);
 }
 
 label {
@@ -326,50 +330,11 @@ label {
 
 .checkboxes {
     min-width: 590px;
-    max-width: 660px;
     row-gap: 30px;
     width: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-
-.rate {
-    margin: auto;
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:var(--text-color);
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
-    color: var(--accent-color);    
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: var(--accent-color);  
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: var(--accent-color);
-}
-
 
 .soumettre {
     margin: auto;
@@ -398,6 +363,16 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
+.selection-filtres {
+    display: grid;
+    grid-template-columns: auto min-content;
+    column-gap: 10px;
+}
+
+.filtres {
+    width: 275px;
+    padding-left: 10px;
+}
 
 /* ---  P A G E  B O T T O M --- */
 
