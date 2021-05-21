@@ -2,6 +2,22 @@
 :root {
     color-scheme: light dark; /* both supported */
 }
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: var(--foreground-color); 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: rgba(42, 42, 42, 0.5); 
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+      background: rgba(47, 47, 47, 0.205); 
+}
 
 html {
     --foreground-color: rgba(88, 88, 88, 0.26);
@@ -24,8 +40,10 @@ html[data-theme='dark'] {
 }
 
 body {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Source Code Pro', monospace;
     margin: 5px;
+    max-height: 100%;
+    min-height: fit-content;
     background-color: var(--background-color);
     background-image: radial-gradient(farthest-corner at 5% 5%,  var(--background-color2), var(--background-color), var(--reddish-accent-color));
 }
@@ -52,18 +70,19 @@ p6 {
 
 .container {
     display: grid;
+    max-height: 100%;
     grid-template-columns: 1fr;
 }
 
 .content-wrapper {
-    height: fit-content;
+    height: 100%;
 }
 
 .nav-wrapper {
     background-color:var(--foreground-color);
     padding: 20px;
     display: grid;
-    grid-template-columns: 250px auto 250px;
+    grid-template-columns: 270px auto 270px;
     border-radius: 5px;
 }
 
@@ -218,7 +237,7 @@ html.transition *:after {
     grid-template-rows: 50px auto;
     width: auto;
     position: relative;
-    height: 600px;
+    height: auto;
     max-width: 1400px;
     padding: 20px;
     margin-top: 5px;
@@ -228,69 +247,115 @@ html.transition *:after {
     color: var(--text-color);
     border-radius: 5px;
     row-gap: 10px;
+    
 }
-.survey-items-wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    height: fit-content;
-    max-width: 1400px;
-    width: auto;
+
+/* --- C O N T E N T --- */
+
+.search-bar{
+	position: relative;
+	width: 500px;
+	height: 60px;
+}
+
+.search-bar:focus-visible{
+    outline-color: transparent;
+}
+
+.search-bar .search-input{
+    background-color: var(--text-color);
+    color: var(--background-color);
+    opacity: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 10px 20px;
+	border-radius: 3px;
+	font-size: 18px;
+	padding-right: 80px;
+	border-radius: 50px;
+}
+
+.btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60px;
+	height: 100%;
+	background: var(--text-color);
+    opacity: 50%;
+	z-index: 1;
+	cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover{
+	background: var(--text-color);
+    opacity: 100%;
+}
+
+.fas{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: #fff;
+	font-size: 20px;
+}
+
+.search-bar .btn{
+	right: 0px;
+	border-radius: 50%;
+}
+
+.available-products {
+    max-height: 450px;
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+.product {
+    background-color: var(--foreground-color);
+    opacity: 70%;
     display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 10px;
-    border-radius: 10px;
-}
-.survey-item-wrapper {
-    min-width: 640px;
-    max-width: 690px;
+    grid-template-columns: 1fr 3fr;
     position: relative;
-    filter: brightness(100%);
-    padding: 10px;
-    background-color:var(--foreground-color);
+    text-transform: uppercase;
+    border-radius: 5px;
 }
 
-.UI-to-survey {
-    height: 708px;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: filter .5s ease;
+.product > img {
+    border-radius: 5px;
 }
 
-.img-text-wrapper {
+.add-cart {
     position: absolute;
-    top: 0;
-    width: 95%;
+    width: 300px;
+    height: 100%;
+    background-color: var(--background-color);
+    opacity: 0%;
+    transition: 0.4s;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     align-items: center;
-    height: 90%;
-    font-size: 45px;
-    text-transform: uppercase;
-    filter: opacity(0%);
-    transition: filter .5s ease;
-    color: rgb(194, 196, 197);
-    text-decoration: none;
-}
-.img-text-wrapper a{
-    text-decoration: none;
+    border-radius: 5px;
+    
 }
 
-.survey-item-wrapper:hover .img-text-wrapper {
-    filter: opacity(100%);
-    transition: filter .5s ease;
+.add-cart:hover {
+    opacity: 90%;
 }
 
-.survey-item-wrapper:hover .UI-to-survey {
-    filter: brightness(20%);
-    transition: filter .5s ease;
+.info {
+    padding-left: 15px;
 }
-
-/* --- S U R V E Y  C O N T E N T --- */
 
 form > input[type=text] {
     width: 40%;
@@ -310,14 +375,13 @@ form > input[type=text]:focus-visible {
     padding-left: 30px;
 }
 
-form {
+.search-for-food {
     display: grid;
     min-width: 600px;
     grid-template-columns: 1fr;
     padding-left: 10px;
     color: var(--text-color);
     row-gap: 10px;
-    border-right: 2px solid var(--line-color);
 }
 
 label {
@@ -372,6 +436,7 @@ input[type=text], select {
 .filtres {
     width: 275px;
     padding-left: 10px;
+    border-left: 2px solid var(--line-color);
 }
 
 /* ---  P A G E  B O T T O M --- */

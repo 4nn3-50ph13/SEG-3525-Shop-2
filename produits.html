@@ -5,9 +5,9 @@
         <meta charset="utf-8" />
         <title>Shop</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
-        <script src="script.js" defer></script>
+        <script src="script.js" async></script>
     </head>
     <body>
         <div class="container">
@@ -20,7 +20,11 @@
                         <a href="produits.html">Produits</a>
                     </div>
                     <div class="nav-link-wrapper">
-                        <a href="panier.html">Panier</a>
+                        <a href="panier.html">
+                            Panier 
+                            <span>(0)</span>
+                            
+                        </a>
                     </div>
 
                 </div>
@@ -43,15 +47,87 @@
                 <div class="welcome-page">
                     <h2>Magasinez</h2>
                     <div class="selection-filtres">
-                        <form>
+                        <div class=search-for-food>
+
+
                             <div class="question">Produits disponnibles</div>
-                            <div class="temporary-measures">
-                                aaa
-                            </div><br>
+                            <div class="search-bar">
+                                <input type="text" class="search-input" placeholder="Recherchez...">
+                                <div class="btn">
+                                    <img class="fas" src="images/loupe.jpg"width="30" height=auto>
+                                </div>
+                            </div>
+                            <div class="available-products">
+                                <div class="product">
+                                    <img src="images/fromage.png" width="300" height=auto alt="food">
+                                    <div class="info">
+                                        <h3>fromage</h3>
+                                        <h3>PRIX: 1,99$ /g</h3>
+                                    </div>
+                                    <a class="add-cart cart1" href="#">Ajouter au panier</a>
+                                </div>
+                                <br>
+                                <div class="product">
+                                    <img src="images/pain.png" width="300" height=auto alt="food">
+                                    <div class="info">
+                                        <h3>pain</h3>
+                                        <h3>PRIX: 4,99$</h3>
+                                    </div>
+                                    <a class="add-cart cart1" href="#">Ajouter au panier</a>
+                                </div>
+                                <br>
+                                <div class="product">
+                                    <img src="images/raisins.png" width="300" height=auto alt="food">
+                                    <div class="info">
+                                        <h3>raisins</h3>
+                                        <h3>PRIX: 1,99$ /g</h3>
+                                    </div>
+                                    <a class="add-cart cart1" href="#">Ajouter au panier</a>
+                                </div>
+                                <br>
+                                <div class="product">
+                                    <img src="images/squash.png" width="300" height=auto alt="food">
+                                    <div class="info">
+                                        <h3>Courge Butternut</h3>
+                                        <h3>PRIX: 1,99$</h3>
+                                    </div>
+                                    <a class="add-cart cart1" href="#">Ajouter au panier</a>
+                                </div>
+                                <br>
+                                <div class="product">
+                                    <img src="images/citrons.png" width="300" height=auto alt="food">
+                                    <div class="info">
+                                        <h3>citrons</h3>
+                                        <h3>PRIX: 5,99$</h3>
+                                    </div>
+                                    <a class="add-cart cart1" href="#">Ajouter au panier</a>
+                                </div>
+                                <br>
+                                <div class="product">
+                                    <img src="images/artichaut.png" width="300" height=auto alt="food">
+                                    <div class="info">
+                                        <h3>artichauts</h3>
+                                        <h3>PRIX: 3,99$</h3>
+                                    </div>
+                                    <a class="add-cart cart1" href="#">Ajouter au panier</a>
+                                </div>
+                                <br>
+                                <div class="product">
+                                    <img src="images/peches.png" width="300" height=auto alt="food">
+                                    <div class="info">
+                                        <h3>pêches</h3>
+                                        <h3>PRIX: 2,99$ /kg</h3>
+                                    </div>
+                                    <a class="add-cart cart1" href="#">Ajouter au panier</a>
+                                </div>
+                                <br>
+                            </div>
+
+
                             <div class="soumettre">
                                 <input type="submit" value="Ajouter au panier">
                             </div>
-                        </form>
+                        </div>
                         <div class="filtres">
                             <div class="question">Vos filtres</div>
                         </div>
