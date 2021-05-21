@@ -320,17 +320,19 @@ html.transition *:after {
     background-color: var(--foreground-color);
     opacity: 70%;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr 1fr;
     position: relative;
     text-transform: uppercase;
     border-radius: 5px;
+    margin-bottom: 10px;
+
 }
 
 .product > img {
     border-radius: 5px;
 }
 
-.add-cart {
+.food-pic {
     position: absolute;
     width: 300px;
     height: 100%;
@@ -349,12 +351,36 @@ html.transition *:after {
     
 }
 
-.add-cart:hover {
+.food-pic:hover {
     opacity: 90%;
 }
 
 .info {
     padding-left: 15px;
+}
+
+.add-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.cart-button {
+    opacity: 70%;
+    height: 55px;
+    width: 55px;
+    margin: 10px;
+    font-size: 40px;
+    border-radius: 50%;
+    border-style: none;
+    padding: 0%;
+}
+
+.cart-button:hover {
+    opacity: 100%;
+    cursor: pointer;
 }
 
 form > input[type=text] {

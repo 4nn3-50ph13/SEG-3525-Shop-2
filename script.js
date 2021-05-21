@@ -17,7 +17,63 @@ let trans = () => {
     }, 1000)
 }
 
-console.log("Here 2");
+
+
+
+
+let cartPlus = document.querySelectorAll('.plus-one');
+console.log(cartPlus);
+
+for (let i=0; i < cartPlus.length; i++){
+    cartPlus[i].addEventListener('click', () => {
+        cartUp();
+    })
+}
+
+function cartUp() {
+    let productNumbers = localStorage.getItem('productNumbers');
+    productNumbers = parseInt(productNumbers);
+
+    if(productNumbers){
+        localStorage.setItem('productNumbers', productNumbers+1);
+        document.querySelector('.nav-link-wrapper span').textContent = productNumbers+1;
+    } else {
+        localStorage.setItem('productNumbers', 1);
+        document.querySelector('.nav-link-wrapper span').textContent = 1;
+    }
+}
+
+let cartMinus = document.querySelectorAll('.minus-one');
+console.log(cartPlus);
+
+for (let i=0; i < cartMinus.length; i++){
+    cartMinus[i].addEventListener('click', () => {
+        cartDown();
+    })
+}
+
+function cartDown() {
+    let productNumbers = localStorage.getItem('productNumbers');
+    productNumbers = parseInt(productNumbers);
+
+    if(productNumbers){
+        localStorage.setItem('productNumbers', productNumbers-1);
+        document.querySelector('.nav-link-wrapper span').textContent = productNumbers-1;
+    } else {
+        localStorage.setItem('productNumbers', 0);
+        document.querySelector('.nav-link-wrapper span').textContent = 0;
+    }
+}
+
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem('productNumbers');
+
+    if(productNumbers) {
+        document.querySelector('.nav-link-wrapper span').textContent = productNumbers;
+    }
+}
+
+onLoadCartNumbers();
 
 
 
@@ -29,35 +85,77 @@ console.log("Here 2");
 
 
 
-
-
-
-
-let suggestions = [
-    "Channel",
-    "CodingLab",
-    "CodingNepal",
-    "YouTube",
-    "YouTuber",
-    "YouTube Channel",
-    "Blogger",
-    "Bollywood",
-    "Vlogger",
-    "Vechiles",
-    "Facebook",
-    "Freelancer",
-    "Facebook Page",
-    "Designer",
-    "Developer",
-    "Web Designer",
-    "Web Developer",
-    "Login Form in HTML & CSS",
-    "How to learn HTML & CSS",
-    "How to learn JavaScript",
-    "How to became Freelancer",
-    "How to became Web Designer",
-    "How to start Gaming Channel",
-    "How to start YouTube Channel",
-    "What does HTML stands for?",
-    "What does CSS stands for?",
+let products = [
+    {
+        name: 'fromage',
+        tag: 'fromage',
+        price: 1.99,
+        inCart: 0
+    },
+    {
+        name: 'pain',
+        tag: 'pain',
+        price: 4.99,
+        inCart: 0
+    },
+    {
+        name: 'raisins',
+        tag: 'raisins',
+        price: 1.99,
+        inCart: 0
+    },
+    {
+        name: 'courge',
+        tag: 'courge',
+        price: 1.99,
+        inCart: 0
+    },
+    {
+        name: 'citrons',
+        tag: 'citrons',
+        price: 5.99,
+        inCart: 0
+    },
+    {
+        name: 'artichauts',
+        tag: 'artichauts',
+        price: 3.99,
+        inCart: 0
+    },
+    {
+        name: 'peches',
+        tag: 'peches',
+        price: 2.99,
+        inCart: 0
+    },
+    {
+        name: 'huitres',
+        tag: 'huitres',
+        price: 13.99,
+        inCart: 0
+    },
+    {
+        name: 'jambon',
+        tag: 'jambon',
+        price: 54.99,
+        inCart: 0
+    },
+    {
+        name: 'tarte aux pommes',
+        tag: 'tarte1',
+        price: 24.99,
+        inCart: 0
+    },
+    {
+        name: 'tarte aux citrons',
+        tag: 'tarte2',
+        price: 26.99,
+        inCart: 0
+    },
+    {
+        name: 'fromage',
+        tag: 'fromage',
+        price: 34.99,
+        inCart: 0
+    }
 ];
