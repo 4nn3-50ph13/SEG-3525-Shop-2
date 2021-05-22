@@ -232,6 +232,7 @@ html.transition *:after {
 /* --- B O D Y --- */
 
 .welcome-page {
+    letter-spacing: 3px;
     min-height: 650px;
     height: auto;
     display: grid;
@@ -318,7 +319,6 @@ html.transition *:after {
 
 .product {
     background-color: var(--foreground-color);
-    opacity: 70%;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     position: relative;
@@ -330,6 +330,7 @@ html.transition *:after {
 
 .product > img {
     border-radius: 5px;
+    opacity: 70%;
 }
 
 .food-pic {
@@ -357,6 +358,20 @@ html.transition *:after {
 
 .info {
     padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.qty {
+    padding-top: 20px;
+    font-size: 75%;
 }
 
 .add-cart {
@@ -368,6 +383,7 @@ html.transition *:after {
 }
 
 .cart-button {
+    background-color: transparent;
     opacity: 70%;
     height: 55px;
     width: 55px;
