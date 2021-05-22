@@ -100,17 +100,17 @@ let products = [
         tag: 'tarte2',
         price: 26,
         inCart: 0,
-        filtres: '-v-vg-sn-soe-sfdm-ss-'
+        filtres: '-v-sn-soe-sfdm-ss-'
     },
     {
-        name: 'vin blanc',
-        tag: 'vin',
+        name: 'fromage',
+        tag: 'fromage',
         price: 34,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-v-sg-sn-soe-sfdm-ss-'
     }
 ];
-unfilteredProducts();
+hideAndShow();
 
 let cartPlus = document.querySelectorAll('.plus-one');
 let cartMinus = document.querySelectorAll('.minus-one');
@@ -291,122 +291,31 @@ let filtres = [
         isChosen: 0
     }
 ];
-hidden = [];
-
-let filtreBoxes = document.querySelectorAll('.row');
-
-for (let i=0; i < filtreBoxes.length; i++){
-    filtreBoxes[i].addEventListener('change', function() {
-        console.log('before '+filtres[i].tag+" "+filtreBoxes[i].isChosen);
-        if(filtreBoxes[i].isChosen == 0 || filtreBoxes[i].isChosen == undefined) { //checking the box, adding filter
-            filtreBoxes[i].isChosen = 1;
-            filtres[i].isChosen = 1;
-            console.log('checqued '+filtres[i].tag+" "+filtreBoxes[i].isChosen);
-            changeFiltre(filtres[i], 0);
-            hideAndShow(filtres[i], 0)
-        } else {                           //unchecking the box, removing filter
-            filtreBoxes[i].isChosen = 0;
-            filtres[i].isChosen = 0;
-            console.log('unchecqued '+filtres[i].tag+" "+filtreBoxes[i].isChosen);
-            changeFiltre(filtres[i], 1);
-            hideAndShow(filtres[i], 1)
-        }
-    })
-}
-
-function changeFiltre(filtre, i) {
-    let chosenFiltres = localStorage.getItem('chosenFiltres');
-    chosenFiltres = JSON.parse(chosenFiltres);
-
-    if (i == 0) { // if we want to add the filter
-        if(chosenFiltres != null){
-            console.log('adding filtre '+filtre.tag+" "+filtre.isChosen);
-            if(chosenFiltres[filtre.tag] == undefined){
-                chosenFiltres = {
-                ...chosenFiltres,
-                [filtre.tag]: filtre
-                }
-            }
-        }else {
-            localStorage.setItem('chosenFiltres', filtre);
-            console.log('creating filtre '+filtre.tag+" "+filtre.isChosen);
-            chosenFiltres = {
-                [filtre.tag]: filtre
-            }
-        }
-        chosenFiltres[filtre.tag].isChosen = 1;
-        localStorage.setItem('chosenFiltres', JSON.stringify(chosenFiltres));
-    }else {
-        filtre.isChosen = 0;
-        chosenFiltres[filtre.tag].isChosen = 0;
-        console.log("tryign to remove... "+filtre.tag+" "+filtre.isChosen);
-        var a = 0;
-        localStorage.removeItem('chosenFiltres');
-        for (const element of filtres) {
-            if(element.isChosen == 1){
-                if(a == 0){
-                    a = 1;
-                    chosenFiltres = {
-                        [element.tag]: filtre
-                        }
-                }else{
-                    chosenFiltres = {
-                        ...chosenFiltres,
-                        [element.tag]: filtre
-                    }
-                }
-            }
-        }
-        if (a == 1){
-            localStorage.setItem('chosenFiltres', JSON.stringify(chosenFiltres));
-        }
-    }
-    //document.querySelector('.info span').textContent = cartItems[filtre.tag].inCart;
-}
-
 
 // ----------     ____   _____   ___    ___        ___        ----------
 // ----------    |     \   |     |__   |___|  |   |   | \   / ---------
 // ----------    |      |  |        \  |      |   |___|  \ /  ----------
 // ----------    |_____/ __|__  \___/  |      |__ |   |   |   ----------
 
-function hideAndShow(filtre, x){
+
+function hideAndShow(){
+    let itemSpots = document.querySelectorAll('.product');
+    let hidden = localStorage.getItem('hidden');
+    hidden = JSON.parse(hidden);
     let unfilteredProducts = localStorage.getItem('unfilteredProducts');
     unfilteredProducts = JSON.parse(unfilteredProducts);
-    var f = '-'+filtre.tag+'-';
-
-    console.log('len '+products.length);
-    for (const element of products){
-        console.log('element.tag '+element.tag);
-        if (!unfilteredProducts[element.tag].filtres.includes(f)){
-            if (x==0){
-                console.log('f - '+f);
-                hidden.push(element)
-            }else{
-                console.log('a');
-                hidden.splice(hidden.indexOf(element), 1);
-            }
-        }
-    }
-    localStorage.setItem('hidden', JSON.stringify(hidden));
-}
-
-function unfilteredProducts(){
-    let availableProducts;
-    var a = 0;
+    console.log("itemSpots "+JSON.stringify(itemSpots));
+    console.log('Ca marche?');
+    
     for (let i=0; i < products.length; i++){
-        if (a == 0){
-            a=1;
-            availableProducts = {
-                [products[i].tag]: products[i]
-            }
-        } else{
-            availableProducts = {
-                ...availableProducts,
-                [products[i].tag]: products[i]
+        for (let j=0; j < hidden.length; j++){
+            const f = JSON.stringify(hidden[j].tag);
+            console.log('f'+f);
+            const prod = JSON.stringify(unfilteredProducts[products[i].tag].tag);
+            console.log('prod '+ prod);
+            if (prod.includes(f)){
+                itemSpots[i].style.display   = "none";
             }
         }
     }
-    localStorage.setItem('unfilteredProducts', JSON.stringify(availableProducts));
 }
-
