@@ -257,6 +257,8 @@ html.transition *:after {
 	position: relative;
 	width: 500px;
 	height: 60px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search-bar:focus-visible{
@@ -424,6 +426,7 @@ form > input[type=text]:focus-visible {
     padding-left: 10px;
     color: var(--text-color);
     row-gap: 10px;
+    text-align: center;
 }
 
 label {
@@ -443,19 +446,27 @@ label {
 }
 
 .soumettre {
-    margin: auto;
-}
-
-input[type=submit] {
-    background-color: var(--background-color);
-    width: 100%;
-    color: var(--text-color);
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--foreground-color);
+    opacity: 50%;
+    width: fit-content;
     padding: 12px 12px;
     font-size: 12px;
     border: 1px solid rgb(68, 68, 68);
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.soumettre a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.soumettre:hover {
+    opacity: 80%;
 }
 
 input[type=text], select {
@@ -475,10 +486,25 @@ input[type=text], select {
     column-gap: 10px;
 }
 
-.filtres {
+.vos-filtres {
     width: 275px;
     padding-left: 10px;
     border-left: 2px solid var(--line-color);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.filtres{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.displayFiltre {
+    padding: 5px;
+    padding-bottom: 15px;
+    margin: auto;
 }
 
 /* ---  P A G E  B O T T O M --- */

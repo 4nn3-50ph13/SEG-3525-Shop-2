@@ -375,15 +375,11 @@ function hideAndShow(filtre, x){
     unfilteredProducts = JSON.parse(unfilteredProducts);
     var f = '-'+filtre.tag+'-';
 
-    console.log('len '+products.length);
     for (const element of products){
-        console.log('element.tag '+element.tag);
         if (!unfilteredProducts[element.tag].filtres.includes(f)){
             if (x==0){
-                console.log('f - '+f);
                 hidden.push(element)
             }else{
-                console.log('a');
                 hidden.splice(hidden.indexOf(element), 1);
             }
         }
