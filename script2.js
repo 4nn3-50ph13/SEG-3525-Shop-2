@@ -103,13 +103,35 @@ let products = [
         filtres: '-v-sn-soe-sfdm-ss-'
     },
     {
-        name: 'fromage',
-        tag: 'fromage',
+        name: 'Vin blanc',
+        tag: 'vin',
         price: 34,
         inCart: 0,
-        filtres: '-v-sg-sn-soe-sfdm-ss-'
+        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-'
     }
 ];
+
+unfilteredProducts()
+
+function unfilteredProducts(){
+    let availableProducts;
+    var a = 0;
+    for (let i=0; i < products.length; i++){
+        if (a == 0){
+            a=1;
+            availableProducts = {
+                [products[i].tag]: products[i]
+            }
+        } else{
+            availableProducts = {
+                ...availableProducts,
+                [products[i].tag]: products[i]
+            }
+        }
+    }
+    localStorage.setItem('unfilteredProducts', JSON.stringify(availableProducts));
+}
+
 hideAndShow();
 
 let cartPlus = document.querySelectorAll('.plus-one');
@@ -304,15 +326,24 @@ function hideAndShow(){
     hidden = JSON.parse(hidden);
     let unfilteredProducts = localStorage.getItem('unfilteredProducts');
     unfilteredProducts = JSON.parse(unfilteredProducts);
-    
-    for (let i=0; i < products.length; i++){
-        for (let j=0; j < hidden.length; j++){
-            const f = JSON.stringify(hidden[j].tag);
-            const prod = JSON.stringify(unfilteredProducts[products[i].tag].tag);
-            if (prod.includes(f)){
-                itemSpots[i].style.display   = "none";
+    if (hidden == null){
+        let f = document.querySelectorAll('.displayFiltre');
+        for (const element of f){
+            element.style.display = "none"
+        }
+        var aucun = document.getElementById('aucun');
+        aucun.style.display = "initial";
+    }else{
+        for (let i=0; i < products.length; i++){
+            for (let j=0; j < hidden.length; j++){
+                const f = JSON.stringify(hidden[j].tag);
+                const prod = JSON.stringify(unfilteredProducts[products[i].tag].tag);
+                if (prod.includes(f)){
+                    itemSpots[i].style.display   = "none";
+                }
             }
         }
+
     }
 }
 
@@ -321,7 +352,6 @@ function showFiltres() {
     chosenFiltres = JSON.parse(chosenFiltres);
     var a = 0;
     var aucun = document.getElementById('aucun');
-    console.log("aucun "+aucun);
     if (chosenFiltres != null){
         for(let i = 0; i < filtres.length; i++){
             if (chosenFiltres[filtres[i].tag] == undefined){
@@ -345,5 +375,23 @@ function showFiltres() {
         }
         var aucun = document.getElementById('aucun');
         aucun.style.display = "initial";
+    }
+}
+
+searchBar()
+
+function searchBar() {
+    let itemSpots = document.querySelectorAll('.product');
+    var input = document.querySelector('.search-input').value;
+    let unfilteredProducts = localStorage.getItem('unfilteredProducts');
+    unfilteredProducts = JSON.parse(unfilteredProducts);
+
+    if (input != null){
+        for (let i=0; i < products.length; i++){
+            var name = unfilteredProducts[products[i].tag].name;
+            if(!name.includes(input)){
+                itemSpots[i].style.display   = "none";
+            }
+        }
     }
 }

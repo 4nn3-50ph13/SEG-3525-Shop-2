@@ -103,13 +103,35 @@ let products = [
         filtres: '-v-sn-soe-sfdm-ss-'
     },
     {
-        name: 'fromage',
-        tag: 'fromage',
+        name: 'Vin blanc',
+        tag: 'vin',
         price: 34,
         inCart: 0,
-        filtres: '-v-sg-sn-soe-sfdm-ss-'
+        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-'
     }
 ];
+
+unfilteredProducts()
+
+function unfilteredProducts(){
+    let availableProducts;
+    var a = 0;
+    for (let i=0; i < products.length; i++){
+        if (a == 0){
+            a=1;
+            availableProducts = {
+                [products[i].tag]: products[i]
+            }
+        } else{
+            availableProducts = {
+                ...availableProducts,
+                [products[i].tag]: products[i]
+            }
+        }
+    }
+    localStorage.setItem('unfilteredProducts', JSON.stringify(availableProducts));
+}
+
 
 // ----------       ____           ___    ____        ____  ----------
 // ----------     /     '  |        |    |___   |\  |   |   ---------
