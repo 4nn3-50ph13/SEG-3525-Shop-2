@@ -30,88 +30,104 @@ let products = [
         tag: 'fromage',
         price: 2,
         inCart: 0,
-        filtres: '-vg-sg-sn-soe-ss-sfdm-'
+        filtres: '-vg-sg-sn-soe-ss-sfdm-',
+        toHide: 0
     },
     {
         name: 'pain',
         tag: 'pain',
         price: 5,
         inCart: 0,
-        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
     },
     {
         name: 'raisins',
         tag: 'raisins',
         price: 2,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
     },
     {
         name: 'courge',
         tag: 'courge',
         price: 2,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
     },
     {
         name: 'citrons',
         tag: 'citrons',
         price: 6,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
     },
     {
         name: 'artichauts',
         tag: 'artichauts',
         price: 4,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
     },
     {
         name: 'peches',
         tag: 'peches',
         price: 3,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
     },
     {
         name: 'huitres',
         tag: 'huitres',
         price: 13,
         inCart: 0,
-        filtres: '-sg-sn-soe-sl-ss-'
+        filtres: '-sg-sn-soe-sl-ss-',
+        toHide: 0
     },
     {
         name: 'jambon',
         tag: 'jambon',
         price: 54,
         inCart: 0,
-        filtres: '-sg-sn-soe-sfdm-sl-ss-'
+        filtres: '-sg-sn-soe-sfdm-sl-ss-',
+        toHide: 0
     },
     {
         name: 'tarte aux pommes',
         tag: 'tarte1',
         price: 24,
         inCart: 0,
-        filtres: '-vg-v-soe-H-sfdm-sl-k-'
+        filtres: '-vg-v-soe-H-sfdm-sl-k-',
+        toHide: 0
     },
     {
         name: 'tarte aux citrons',
         tag: 'tarte2',
         price: 26,
         inCart: 0,
-        filtres: '-v-sn-soe-sfdm-ss-'
+        filtres: '-v-vg-sn-soe-sfdm-ss-',
+        toHide: 0
     },
     {
-        name: 'Vin blanc',
+        name: 'vin blanc',
         tag: 'vin',
         price: 34,
         inCart: 0,
-        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-'
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
     }
 ];
 
-unfilteredProducts()
+let unfilteredProds = localStorage.getItem('unfilteredProducts');
+unfilteredProds = parseInt(unfilteredProds);
+if(unfilteredProds == null){
+    unfilteredProducts();
+}
 
 function unfilteredProducts(){
     let availableProducts;
@@ -182,7 +198,8 @@ function setItems(product) {
             [product.tag]: product
         }
     }
-    document.querySelector('.info span').textContent = cartItems[product.tag].inCart;
+    var tag = '.'+product.tag+' span'
+    document.querySelector(tag).textContent = cartItems[product.tag].inCart;
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
 }
 
@@ -220,7 +237,8 @@ function removeItems(product) {
         }
         
     }
-    document.querySelector('.info span').textContent = cartItems[product.tag].inCart;
+    var tag = '.'+product.tag+' span'
+    document.querySelector(tag).textContent = cartItems[product.tag].inCart;
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
 }
 
@@ -322,25 +340,30 @@ showFiltres();
 
 function hideAndShow(){
     let itemSpots = document.querySelectorAll('.product');
-    let hidden = localStorage.getItem('hidden');
-    hidden = JSON.parse(hidden);
+    let chosenFiltres = localStorage.getItem('chosenFiltres');
+    chosenFiltres = JSON.parse(chosenFiltres);
     let unfilteredProducts = localStorage.getItem('unfilteredProducts');
     unfilteredProducts = JSON.parse(unfilteredProducts);
-    if (hidden == null){
+
+
+
+    if (chosenFiltres == null){ // no filtre selected
         let f = document.querySelectorAll('.displayFiltre');
         for (const element of f){
             element.style.display = "none"
         }
         var aucun = document.getElementById('aucun');
         aucun.style.display = "initial";
-    }else{
+    }else{                      // show filtre selected
         for (let i=0; i < products.length; i++){
-            for (let j=0; j < hidden.length; j++){
-                const f = JSON.stringify(hidden[j].tag);
-                const prod = JSON.stringify(unfilteredProducts[products[i].tag].tag);
-                if (prod.includes(f)){
-                    itemSpots[i].style.display   = "none";
-                }
+            let hide = unfilteredProducts[products[i].tag];
+            if (hide.toHide == 1){
+                console.log('hide '+hide.tag);
+                itemSpots[i].style.display   = "none";
+            }
+            if (hide.toHide == 0){
+                console.log('DONT hide '+hide.tag);
+                itemSpots[i].style.display   = "";
             }
         }
 

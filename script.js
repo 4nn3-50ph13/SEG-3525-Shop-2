@@ -303,7 +303,6 @@ let filtres = [
         isChosen: 0
     }
 ];
-hidden = [];
 
 let filtreBoxes = document.querySelectorAll('.row');
 
@@ -390,13 +389,15 @@ function hideAndShow(filtre, x){
     for (const element of products){
         if (!unfilteredProducts[element.tag].filtres.includes(f)){
             if (x==0){
-                hidden.push(element)
+                console.log('&??');
+                unfilteredProducts[element.tag].toHide=1;
             }else{
-                hidden.splice(hidden.indexOf(element), 1);
+                console.log('!??');
+                unfilteredProducts[element.tag].toHide=1;
             }
         }
     }
-    localStorage.setItem('hidden', JSON.stringify(hidden));
+    localStorage.setItem('unfilteredProducts', JSON.stringify(unfilteredProducts));
 }
 
 function unfilteredProducts(){
