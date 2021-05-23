@@ -159,8 +159,8 @@ for (let i=0; i < cartPlus.length; i++){
         totalCost(products[i], 0);
     })
     cartMinus[i].addEventListener('click', () => {
-        totalCost(products[i], 1);
         cartDown(products[i]);
+        totalCost(products[i], 1);
     })
 }
 
@@ -212,7 +212,7 @@ function cartDown(product) {
     productNumbers = parseInt(productNumbers);
 
     if(productNumbers){
-        if(cartItems[product.tag].inCart <= 1){
+        if(cartItems[product.tag] != undefined && cartItems[product.tag].inCart >= 1){
             localStorage.setItem('productNumbers', productNumbers-1);
             document.querySelector('.nav-link-wrapper span').textContent = productNumbers-1;
         }
@@ -228,18 +228,42 @@ function removeItems(product) {
     cartItems = JSON.parse(cartItems);
     
     if(cartItems != null){
-
-        if(cartItems[product.tag].inCart > 1){
-            cartItems[product.tag].inCart -= 1;
-        }else {
-            cartItems[product.tag].inCart = 0;
-
+        if (cartItems[product.tag] != undefined){
+            if(cartItems[product.tag].inCart > 1){
+                cartItems[product.tag].inCart -= 1;
+                product.inCart -= 1;
+                var tag = '.'+product.tag+' span'
+                document.querySelector(tag).textContent = cartItems[product.tag].inCart;
+                localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            }else {
+                cartItems[product.tag].inCart = 0;
+                product.inCart = 0;
+                var tag = '.'+product.tag+' span'
+                document.querySelector(tag).textContent = cartItems[product.tag].inCart;
+                var a = 0;
+                localStorage.removeItem('productsInCart');
+                for (const element of products) {
+                    if(element.inCart > 0){
+                        if(a == 0){
+                            a = 1;
+                            cartItems = {
+                                [element.tag]: product
+                                }
+                        }else{
+                            cartItems = {
+                                ...cartItems,
+                                [element.tag]: product
+                            }
+                        }
+                    }
+                }
+                if (a == 1){
+                    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+                }
+            }
         }
         
     }
-    var tag = '.'+product.tag+' span'
-    document.querySelector(tag).textContent = cartItems[product.tag].inCart;
-    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
 }
 
 
@@ -257,22 +281,27 @@ function totalCost(product, i){
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let cartCost = localStorage.getItem('totalCost');
-
-    if(cartCost != null && cartCost != NaN && cartCost != undefined){
-        cartCost = parseInt(cartCost);
-        if(i == 0){
-            var result = cartCost + product.price;
-        }else if(i == 1 && cartItems[product.tag].inCart>0){
-            var result = cartCost - product.price;
+    if (cartItems != null) {
+        if(cartCost != null && cartCost != NaN && cartCost != undefined){
+            cartCost = parseInt(cartCost);
+            if(i == 0){
+                var result = cartCost + product.price;
+            }else if(i == 1 && cartItems[product.tag] != undefined){
+                console.log(cartItems[product.tag].inCart);
+                var result = cartCost - product.price;
+            }
+            localStorage.setItem("totalCost", result);
+        }else{
+            if(i == 0){
+                localStorage.setItem("totalCost", product.price);
+            } else {
+                localStorage.setItem("totalCost", 0);
+            }
+            
         }
-        localStorage.setItem("totalCost", result);
-    }else{
-        console.log('product.price : '+product.price)
-        localStorage.setItem("totalCost", product.price);
     }
 
 }
-
 
 // ----------       ____           ___    ____        ____  ----------
 // ----------     /     '  |        |    |___   |\  |   |   ---------
