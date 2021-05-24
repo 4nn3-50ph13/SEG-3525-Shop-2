@@ -6,9 +6,11 @@ checkbox.addEventListener('change', function() {
     if(this.checked) {
         trans()
         document.documentElement.setAttribute('data-theme', 'dark')
+        localStorage.setItem('theme', 'dark');
     } else {
         trans()
         document.documentElement.setAttribute('data-theme', 'light')
+        localStorage.setItem('theme', 'light');
     }
 })
 
@@ -17,6 +19,11 @@ let trans = () => {
     window.setTimeout(() => {
         document.documentElement.classList.remove('transition')
     }, 1000)
+}
+
+let theme = localStorage.getItem('theme');
+if (theme){
+    document.documentElement.setAttribute('data-theme', theme);
 }
 
 // ----------   -------    ---       ---     ------   ----------

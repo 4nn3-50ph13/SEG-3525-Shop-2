@@ -6,9 +6,11 @@ checkbox.addEventListener('change', function() {
     if(this.checked) {
         trans()
         document.documentElement.setAttribute('data-theme', 'dark')
+        localStorage.setItem('theme', 'dark');
     } else {
         trans()
         document.documentElement.setAttribute('data-theme', 'light')
+        localStorage.setItem('theme', 'light');
     }
 })
 
@@ -17,6 +19,11 @@ let trans = () => {
     window.setTimeout(() => {
         document.documentElement.classList.remove('transition')
     }, 1000)
+}
+
+let theme = localStorage.getItem('theme');
+if (theme){
+    document.documentElement.setAttribute('data-theme', theme);
 }
 
 // ----------   -------    ---       ---     ------   ----------
@@ -281,6 +288,7 @@ function totalCost(product, i){
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let cartCost = localStorage.getItem('totalCost');
+    
     if (cartItems != null) {
         if(cartCost != null && cartCost != NaN && cartCost != undefined){
             cartCost = parseInt(cartCost);
@@ -299,6 +307,8 @@ function totalCost(product, i){
             }
             
         }
+    }else {
+        localStorage.setItem("totalCost", 0);
     }
 
 }
