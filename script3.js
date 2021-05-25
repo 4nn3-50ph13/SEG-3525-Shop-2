@@ -35,7 +35,7 @@ let products = [
         tag: 'courge',
         price: 2,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -51,7 +51,7 @@ let products = [
         tag: 'raisins',
         price: 2,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -59,7 +59,7 @@ let products = [
         tag: 'peches',
         price: 3,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -67,7 +67,7 @@ let products = [
         tag: 'artichauts',
         price: 4,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -75,7 +75,7 @@ let products = [
         tag: 'pain',
         price: 5,
         inCart: 0,
-        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -83,7 +83,7 @@ let products = [
         tag: 'citrons',
         price: 6,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -99,7 +99,7 @@ let products = [
         tag: 'tarte1',
         price: 24,
         inCart: 0,
-        filtres: '-vg-v-soe-H-sfdm-sl-k-',
+        filtres: '-vg-v-soe-H-sfdm-sl-bio-',
         toHide: 0
     },
     {
@@ -115,7 +115,7 @@ let products = [
         tag: 'vin',
         price: 34,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -210,7 +210,7 @@ function cartDown(product) {
     let productNumbers = localStorage.getItem('productNumbers');
     productNumbers = parseInt(productNumbers);
 
-    if(productNumbers){
+    if(productNumbers && cartItems != null){
         if(cartItems[product.tag] != undefined && cartItems[product.tag].inCart >= 1){
             localStorage.setItem('productNumbers', productNumbers-1);
             document.querySelector('.nav-link-wrapper span').textContent = productNumbers-1;
@@ -284,14 +284,17 @@ function totalCost(product, i){
     if (cartItems != null) {
         if(cartCost != null && cartCost != NaN && cartCost != undefined){
             cartCost = parseInt(cartCost);
+            var result = 0;
             if(i == 0){
-                var result = cartCost + product.price;
+                result = cartCost + product.price;
+                localStorage.setItem("totalCost", result);
+                prix.textContent = result;
             }else if(i == 1 && cartItems[product.tag] != undefined){
                 console.log(cartItems[product.tag].inCart);
-                var result = cartCost - product.price;
+                result = cartCost - product.price;
+                localStorage.setItem("totalCost", result);
+                prix.textContent = result;
             }
-            localStorage.setItem("totalCost", result);
-            prix.textContent = result;
         }else{
             if(i == 0){
                 localStorage.setItem("totalCost", product.price);
@@ -363,11 +366,12 @@ let filtres = [
         isChosen: 0
     },
     {
-        name: 'Kasher',
-        tag: 'k',
+        name: 'Biologique',
+        tag: 'bio',
         isChosen: 0
     }
 ];
+
 showFiltres();
 
 showCartItems();

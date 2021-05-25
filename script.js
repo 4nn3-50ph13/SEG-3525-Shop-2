@@ -37,7 +37,7 @@ let products = [
         tag: 'courge',
         price: 2,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -53,7 +53,7 @@ let products = [
         tag: 'raisins',
         price: 2,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -61,7 +61,7 @@ let products = [
         tag: 'peches',
         price: 3,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -69,7 +69,7 @@ let products = [
         tag: 'artichauts',
         price: 4,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -77,7 +77,7 @@ let products = [
         tag: 'pain',
         price: 5,
         inCart: 0,
-        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -85,7 +85,7 @@ let products = [
         tag: 'citrons',
         price: 6,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -101,7 +101,7 @@ let products = [
         tag: 'tarte1',
         price: 24,
         inCart: 0,
-        filtres: '-vg-v-soe-H-sfdm-sl-k-',
+        filtres: '-vg-v-soe-H-sfdm-sl-bio-',
         toHide: 0
     },
     {
@@ -117,7 +117,7 @@ let products = [
         tag: 'vin',
         price: 34,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-bio-',
         toHide: 0
     },
     {
@@ -306,8 +306,8 @@ let filtres = [
         isChosen: 0
     },
     {
-        name: 'Kasher',
-        tag: 'k',
+        name: 'Biologique',
+        tag: 'bio',
         isChosen: 0
     }
 ];
@@ -397,11 +397,10 @@ function hideAndShow(filtre, x){
     for (const element of products){
         if (!unfilteredProducts[element.tag].filtres.includes(f)){
             if (x==0){
-                console.log('&??');
                 unfilteredProducts[element.tag].toHide=1;
             }else{
                 console.log('!??');
-                unfilteredProducts[element.tag].toHide=1;
+                unfilteredProducts[element.tag].toHide=0;
             }
         }
     }

@@ -448,6 +448,11 @@ label {
     font-size: 24px;
 }
 
+.question.prod {
+    font-size: 14px;
+    padding: 16px;
+}
+
 .checkboxes {
     min-width: 590px;
     row-gap: 30px;
