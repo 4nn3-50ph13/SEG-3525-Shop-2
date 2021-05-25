@@ -33,30 +33,6 @@ if (theme){
 
 let products = [
     {
-        name: 'fromage',
-        tag: 'fromage',
-        price: 2,
-        inCart: 0,
-        filtres: '-vg-sg-sn-soe-ss-sfdm-',
-        toHide: 0
-    },
-    {
-        name: 'pain',
-        tag: 'pain',
-        price: 5,
-        inCart: 0,
-        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-',
-        toHide: 0
-    },
-    {
-        name: 'raisins',
-        tag: 'raisins',
-        price: 2,
-        inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
-        toHide: 0
-    },
-    {
         name: 'courge',
         tag: 'courge',
         price: 2,
@@ -65,17 +41,17 @@ let products = [
         toHide: 0
     },
     {
-        name: 'citrons',
-        tag: 'citrons',
-        price: 6,
+        name: 'fromage',
+        tag: 'fromage',
+        price: 2,
         inCart: 0,
-        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        filtres: '-vg-sg-sn-soe-ss-sfdm-',
         toHide: 0
     },
     {
-        name: 'artichauts',
-        tag: 'artichauts',
-        price: 4,
+        name: 'raisins',
+        tag: 'raisins',
+        price: 2,
         inCart: 0,
         filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
         toHide: 0
@@ -89,19 +65,35 @@ let products = [
         toHide: 0
     },
     {
+        name: 'artichauts',
+        tag: 'artichauts',
+        price: 4,
+        inCart: 0,
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
+    },
+    {
+        name: 'pain',
+        tag: 'pain',
+        price: 5,
+        inCart: 0,
+        filtres: '-vg-v-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
+    },
+    {
+        name: 'citrons',
+        tag: 'citrons',
+        price: 6,
+        inCart: 0,
+        filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
+        toHide: 0
+    },
+    {
         name: 'huitres',
         tag: 'huitres',
         price: 13,
         inCart: 0,
         filtres: '-sg-sn-soe-sl-ss-',
-        toHide: 0
-    },
-    {
-        name: 'jambon',
-        tag: 'jambon',
-        price: 54,
-        inCart: 0,
-        filtres: '-sg-sn-soe-sfdm-sl-ss-',
         toHide: 0
     },
     {
@@ -127,8 +119,17 @@ let products = [
         inCart: 0,
         filtres: '-vg-v-sg-sn-soe-H-sfdm-sl-ss-k-',
         toHide: 0
+    },
+    {
+        name: 'jambon',
+        tag: 'jambon',
+        price: 54,
+        inCart: 0,
+        filtres: '-sg-sn-soe-sfdm-sl-ss-',
+        toHide: 0
     }
 ];
+
 unfilteredProducts();
 
 let cartPlus = document.querySelectorAll('.plus-one');
