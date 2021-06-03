@@ -109,7 +109,7 @@ let products = [
         tag: 'tarte2',
         price: 26,
         inCart: 0,
-        filtres: '-v-vg-sn-soe-sfdm-ss-',
+        filtres: '-vg-sn-soe-sfdm-ss-',
         toHide: 0
     },
     {
@@ -426,3 +426,36 @@ function unfilteredProducts(){
     localStorage.setItem('unfilteredProducts', JSON.stringify(availableProducts));
 }
 
+let chkbx = document.querySelectorAll('.chk');
+let chosenFiltres = localStorage.getItem('chosenFiltres');
+chosenFiltres = JSON.parse(chosenFiltres);
+
+if (chosenFiltres != null) {
+    for (const element of chkbx){
+        for (const filtre of filtres){
+            f = chosenFiltres[filtre.tag];
+            if(f == undefined){
+                check(filtre.tag,false);
+            }else if (f.tag == element.value){
+                check(f.tag,true);
+            }
+        }
+        //console.log(chosenFiltres);
+    }
+}
+
+var resetBtn = document.querySelector('.soumettre.reset');
+
+resetBtn.addEventListener('click', function() {
+    localStorage.removeItem('chosenFiltres');
+    for (const element of chkbx){
+        check(element.value,false);
+    }
+});
+
+function check(value,checked) {
+    const cbs = document.querySelectorAll('input[value='+value+']');
+    cbs.forEach((cb) => {
+        cb.checked = checked;
+    });
+}

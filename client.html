@@ -46,49 +46,55 @@
                 <div class="welcome-page">
                     <h2>Vos informations</h2>
                         <div class="search-for-food">
+                            <h2></h2>
                             <div class="question">Préférences alimentaires</div>
-                            <div class="checkboxes">
+                            <div class="checkboxes" id="checkbox-container">
                                 <div class="row">
-                                    <input type="checkbox" id="Végétarien" class="chk" value="Végétarien">
+                                    <input type="checkbox" id="Végétarien" class="chk" value="vg">
                                     <label for="Végétarien"> Végétarien</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Sans gluten" class="chk" value="Sans gluten">
+                                    <input type="checkbox" id="Sans gluten" class="chk" value="sg">
                                     <label for="Sans gluten"> Sans gluten</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Sans noix" class="chk" value="Sans noix">
+                                    <input type="checkbox" id="Sans noix" class="chk" value="sn">
                                     <label for="Sans noix"> Sans noix</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Sans Œufs" class="chk" value="Sans Œufs">
+                                    <input type="checkbox" id="Sans Œufs" class="chk" value="soe">
                                     <label for="Sans Œufs"> Sans Œufs</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Halal" class="chk" value="Halal">
+                                    <input type="checkbox" id="Halal" class="chk" value="H">
                                     <label for="Halal"> Halal</label>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Végétalien" class="chk" value="Végétalien">
+                                    <input type="checkbox" id="Végétalien" class="chk" value="v">
                                     <label for="Végétalien"> Végétalien</label>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Sans lactose" class="chk" value="Sans lactose">
+                                    <input type="checkbox" id="Sans lactose" class="chk" value="sl">
                                     <label for="Sans lactose"> Sans lactose</label>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Sans soja" class="chk" value="Sans soja">
+                                    <input type="checkbox" id="Sans soja" class="chk" value="ss">
                                     <label for="Sans soja"> Sans soja</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Sans fruits de mer" class="chk" value="Sans fruits de mer">
+                                    <input type="checkbox" id="Sans fruits de mer" class="chk" value="sfdm">
                                     <label for="Sans fruits de mer"> Sans fruits de mer</label>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox" id="Biologique" class="chk" value="Biologique">
+                                    <input type="checkbox" id="Biologique" class="chk" value="bio">
                                     <label for="Biologique"> Biologique</label>
                                 </div>
-                            </div><br>
+                            </div>
+                            <div class="bouton">
+                                <div class="soumettre reset">
+                                    <a>Reset</a>
+                                </div>
+                            </div>
                             <div class="question">Commentaires ou notes</div>
                             <input type="text" id="commentaires" name="commentaires" placeholder="Notes? Commentaires? Je sais pas!"><br>
                             <div class="bouton">

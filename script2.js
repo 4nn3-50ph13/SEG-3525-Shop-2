@@ -108,7 +108,7 @@ let products = [
         tag: 'tarte2',
         price: 26,
         inCart: 0,
-        filtres: '-v-vg-sn-soe-sfdm-ss-',
+        filtres: '-vg-sn-soe-sfdm-ss-',
         toHide: 0
     },
     {

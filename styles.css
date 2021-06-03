@@ -226,7 +226,7 @@ html.transition *:after {
 }
 
 .active-nav-link {
-    opacity: 70%;
+    font-weight: 600;
     border-bottom: 1px solid var(--text-color);
   }
 
@@ -238,7 +238,7 @@ html.transition *:after {
     height: auto;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 50px auto;
+    grid-template-rows: 25px auto;
     width: auto;
     position: relative;
     padding: 20px;
@@ -352,6 +352,12 @@ html.transition *:after {
     border-radius: 5px;
 }
 
+.item {
+    letter-spacing: 1px;
+    font-size: 12px;
+    margin-top: 1px;
+}
+
 .food-pic:hover {
     opacity: 90%;
 }
@@ -458,6 +464,8 @@ label {
     row-gap: 30px;
     width: auto;
     display: grid;
+    text-align: left;
+    letter-spacing: 1px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
@@ -469,15 +477,21 @@ label {
 }
 
 .soumettre {
+    margin: auto;
     background-color: var(--foreground-color);
     opacity: 50%;
-    width: 100%;
+    width: 80%;
     height: 100%;
     font-size: 14px;
     border-radius: 3px;
     cursor: pointer;
     text-transform: uppercase;
     transition: 0.5s;
+}
+
+.soumettre.reset {
+    margin: auto;
+    width: 120px;
 }
 
 .soumettre.index {
@@ -522,9 +536,7 @@ label {
 }
 
 .soumettre a {
-    letter-spacing: 10px;
-    position: absolute;
-    width: 350px;
+    letter-spacing: 2px;
     height: 50px;
     transition: 0.4s;
     text-transform: uppercase;
@@ -542,9 +554,14 @@ label {
     height: 50px;
 }
 
+.soumettre.prod {
+    width: 100%;
+}
+
 .soumettre.prod a {
     width: 200px;
     height: 50px;
+    letter-spacing: 2px;
 }
 
 .soumettre:hover {
@@ -564,8 +581,6 @@ input[type=text], select {
 
 .selection-filtres {
     max-width: 1400px;
-    margin-right: auto;
-    margin-left: auto;
     display: grid;
     grid-template-columns: auto min-content;
     column-gap: 10px;
