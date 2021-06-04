@@ -224,10 +224,6 @@ function cartDown(product) {
             document.querySelector('.nav-link-wrapper span').textContent = productNumbers-1;
         }
     } else {
-        console.log("productNumbers");
-        console.log(productNumbers);
-        console.log("cartItems");
-        console.log(cartItems);
         localStorage.setItem('productNumbers', 0);
         document.querySelector('.nav-link-wrapper span').textContent = 0;
     }
