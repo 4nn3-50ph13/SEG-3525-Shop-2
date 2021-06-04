@@ -469,3 +469,7 @@ function searchBar() {
 let prix = document.getElementById('prix-total');
 let total = localStorage.getItem('totalCost');
 prix.textContent = total;
+
+for(const product of products){
+    setItems(product);
+}
