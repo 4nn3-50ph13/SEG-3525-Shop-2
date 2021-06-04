@@ -165,8 +165,8 @@ for (let i=0; i < cartPlus.length; i++){
         totalCost(products[i], 0);
     })
     cartMinus[i].addEventListener('click', () => {
-        cartDown(products[i]);
         totalCost(products[i], 1);
+        cartDown(products[i]);
     })
 }
 
@@ -205,6 +205,7 @@ function setItems(product) {
         }
     }
     var tag = '.'+product.tag+' span'
+    console.log(document.querySelector(tag));
     document.querySelector(tag).textContent = cartItems[product.tag].inCart;
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
 }
@@ -218,11 +219,15 @@ function cartDown(product) {
     productNumbers = parseInt(productNumbers);
 
     if(productNumbers && cartItems != null){
-        if(cartItems[product.tag] != undefined && cartItems[product.tag].inCart >= 1){
+        if(cartItems[product.tag] != undefined && cartItems[product.tag].inCart == 1){
             localStorage.setItem('productNumbers', productNumbers-1);
             document.querySelector('.nav-link-wrapper span').textContent = productNumbers-1;
         }
     } else {
+        console.log("productNumbers");
+        console.log(productNumbers);
+        console.log("cartItems");
+        console.log(cartItems);
         localStorage.setItem('productNumbers', 0);
         document.querySelector('.nav-link-wrapper span').textContent = 0;
     }
@@ -456,7 +461,7 @@ function searchBar() {
     let unfilteredProducts = localStorage.getItem('unfilteredProducts');
     unfilteredProducts = JSON.parse(unfilteredProducts);
 
-    if (input != null){
+    if (input != null && input != ""){
         for (let i=0; i < products.length; i++){
             var name = unfilteredProducts[products[i].tag].name;
             if(!name.includes(input)){
@@ -470,6 +475,13 @@ let prix = document.getElementById('prix-total');
 let total = localStorage.getItem('totalCost');
 prix.textContent = total;
 
-for(const product of products){
-    setItems(product);
+
+let productsInCart = localStorage.getItem('productsInCart');
+productsInCart = JSON.parse(productsInCart);
+let qtySpots = document.querySelectorAll('.qty span');
+
+if (productsInCart != null){
+    for(let i = 0; i < products.length; i++){
+        qtySpots[i].textContent = productsInCart[products[i].tag].inCart;
+    }
 }
