@@ -25,19 +25,21 @@ html {
     --background-color2: rgb(54, 30, 14);
     --reddish-accent-color: rgb(38, 38, 58);
     --text-color: rgb(194, 196, 197);
+    --search-color: rgba(194, 196, 197, 0.5);
+    --input-color: rgb(11, 11, 12);
     --line-color: rgba(194, 196, 197, 0.35);
-    --accent-color: #77242baf;
     --btn-color:#42424281;
 }
 
 html[data-theme='dark'] {
-    --foreground-color: rgba(178, 183, 184, 0.26);
-    --background-color: rgb(151, 135, 135);
-    --background-color2: #b97b52;
+    --foreground-color: rgba(178, 183, 184, 0.5);
+    --background-color: rgb(90, 102, 100);
+    --background-color2: #b97b5291;
     --text-color: rgb(22, 22, 22);
+    --search-color: rgb(90, 102, 100, 0.5);
+    --input-color: rgb(11, 11, 12);
     --reddish-accent-color: rgb(90, 102, 100);
     --line-color: rgb(27, 27, 27);
-    --accent-color: #92603ec2;
     --btn-color:#bbbbbb81;
 }
 
@@ -61,6 +63,7 @@ h1 {
 }
 
 h2 {
+    font-size: 50px;
     letter-spacing: 10px;
     margin: 0px;
     height: min-content;
@@ -273,9 +276,8 @@ html.transition *:after {
 }
 
 .search-bar .search-input{
-    background-color: var(--text-color);
-    color: var(--background-color);
-    opacity: 50%;
+    background-color: var(--search-color);
+    color: var(--input-color);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -459,7 +461,7 @@ label {
 }
 
 .question {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .question.prod {
@@ -475,6 +477,11 @@ label {
     text-align: left;
     letter-spacing: 1px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.row label{
+    font-weight: 600;
+    font-size: 22px;
 }
 
 .bouton {
