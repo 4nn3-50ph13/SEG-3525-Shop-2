@@ -730,7 +730,7 @@ input[type=text], select {
 
 /* Hide the images by default */
 .mySlides {
-    opacity: 70%;
+    opacity: 50%;
   display: none;
 }
 
